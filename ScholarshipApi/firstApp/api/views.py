@@ -6,4 +6,5 @@ from rest_framework.permissions import AllowAny
 @api_view()
 @permission_classes([AllowAny])
 def firstFunction(request):
+    print(request.query_params)
     return Response({'message': 'we recieved your request'})
