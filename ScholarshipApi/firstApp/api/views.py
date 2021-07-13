@@ -5,15 +5,18 @@ from firstApp.models import Scholarship
 
 
 class ScholarshipViewset(viewsets.ModelViewSet):
+    """Scholarship API Viewset"""
     serializer_class = ScholarshipSerializer
     queryset = scholarships = Scholarship.objects.all()
 
 
 class ScholarshipSearchViewset(viewsets.ModelViewSet):
+    """Scholarship Search API Viewset"""
     serializer_class = ScholarshipSerializer
     queryset = scholarships = Scholarship.objects.all()
 
     def retrieve(self, request, *args, **kwargs):
+        """Overwriting the viewset retrieve function in order to filter through database using url parameter"""
         params = kwargs
         scholarships_filter = Scholarship.objects.filter(
             scholarship_name__contains=params['pk'])
